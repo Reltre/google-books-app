@@ -1,0 +1,25 @@
+{
+  "name": "google-books-app",
+  "version": "1.0.0",
+  "description": "A Book Search App that makes uses of the Google Books API",
+  "main": "index.ts",
+  "scripts": {
+    "test": "jest",
+    "start": "ts-node index.ts"
+  },
+  "author": "Tyler Lippert",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^6.2.0",
+    "yarn": "^1.13.0"
+  },
+  "engines": {
+    "node": "11.0.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^23.3.13",
+    "jest": "^23.6.0",
+    "ts-jest": "^23.10.5",
+    "typescript": "^3.2.4"
+  }
+}
