@@ -1,8 +1,17 @@
 import { BookRetrieval }from '../bookRetrievalService'
 
 describe("when a book is in Google's records", () => {
-  test('returns a response with volumeInfo, title', () => {
-    expect(BookRetrieval.search().volumeInfo).toHaveProperty('title') 
+  test('returns a list of titles', async () => {
+    const title = 'Dracula'
+    const data = await BookRetrieval.search(title)
+    expect(data.totalItems).toBeGreaterThan(0) 
   })
-  test('returns a response with volumeInfo, authors', () => {})
+})
+
+describe("when a book is not in Google's records", () => {
+  test('returns a list of titles', async () => {
+    const title = 'UMFDSFSnf123'
+    const data = await BookRetrieval.search(title)
+    expect(data.totalItems).toEqual(0) 
+  })
 })
