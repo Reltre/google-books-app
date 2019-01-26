@@ -8,9 +8,6 @@ export class BookRetrieval {
     const response = await axios.get(
       `https://www.googleapis.com/books/v1/volumes?q=${title}`
     )
-    
-    // const bookVolumeInfo: volumeInfo = response.data.volumeInfo
-    console.log(response.data)
     return response.data
   }
 }
