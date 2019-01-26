@@ -60,7 +60,6 @@ describe('BookTransformer with successful search', () => {
     delete rawData.items[0].volumeInfo.imageLinks
 
     const bookData = BookDataTransformer.parse(rawData)
-
     const missingImageUrl = "src/public/images/defaultThumbnail.png"
     const testData = [
       new BookInfo({

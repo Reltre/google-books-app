@@ -26,11 +26,10 @@ export class BookDataTransformer {
   static DEFAULT_THUMBNAIL_PATH = "src/public/images/defaultThumbnail.png"
 
   static parse(rawData: any) {
+    if (rawData.totalItems === 0) return new Array<string>()
+
     return rawData.items.map( (bookData: any) => {
-      const bookHasImageLinks =  !!bookData.volumeInfo.imageLinks
-      const image =  bookHasImageLinks ? 
-        bookData.volumeInfo.imageLinks.thumbnail : 
-        BookDataTransformer.DEFAULT_THUMBNAIL_PATH
+      const image = BookDataTransformer.setImagePathFrom(bookData)
 
       return new BookInfo({
         authors: bookData.volumeInfo.authors,
@@ -41,4 +40,13 @@ export class BookDataTransformer {
       })
     })
   }
+
+  private static setImagePathFrom(data: any) {
+    const bookHasImageLinks =  !!data.volumeInfo.imageLinks
+
+    return bookHasImageLinks ? 
+        data.volumeInfo.imageLinks.thumbnail : 
+        BookDataTransformer.DEFAULT_THUMBNAIL_PATH
+  }
 }
+
