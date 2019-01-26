@@ -83,27 +83,9 @@ describe('BookTransformer with successful search', () => {
 })
 
 describe('BookTransformer with unsuccessful search', () => {
-  test('returns a BookInfo object of the correct shape', () => {
-    // const rawData = Object.assign({}, sampleBookData)
-    // delete rawData.items[0].volumeInfo.imageLinks
-    // const bookData = BookDataTransformer.parse(rawData)
-    // const missingImageUrl = "src/public/images/defaultThumbnail."
-    // const testData = [
-    //   new BookInfo({
-    //     title: 'Dracula',
-    //     authors: [ 'Stephanie Spinner'],
-    //     publisher: 'Turtleback',
-    //     image: missingImageUrl,
-    //     url: 'http://books.google.com/books?id=ZYBTswEACAAJ&dq=Dracula&hl=&source=gbs_api'
-    //   }),
-    //   new BookInfo({
-    //     title: 'Dracula',
-    //     authors: [ 'Stephanie Spinner' ],
-    //     publisher: 'Random House Books for Young Readers',
-    //     image: 'http://books.google.com/books/content?id=T1VDAQAAMAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
-    //     url: 'http://books.google.com/books?id=8xliPgAACAAJ&dq=Dracula&hl=&source=gbs_api'
-    //   })
-    // ]
-    // expect(bookData).toEqual(testData)
+  test('returns an empty array', () => {
+    const rawData = { kind: 'books#volumes', totalItems: 0 }
+    const bookData = BookDataTransformer.parse(rawData)
+    expect(bookData).toEqual([])
   })
 })
