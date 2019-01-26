@@ -2,7 +2,6 @@ import * as dotenv from "dotenv"
 import axios from "axios"
 dotenv.config()
 
-type volumeInfo = { title: string, authors: Array<string> }
 export class BookRetrieval {
   static async search(title: string) {
     const response = await axios.get(
