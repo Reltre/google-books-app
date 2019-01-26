@@ -1,5 +1,3 @@
-import { url } from "inspector";
-
 export interface IBookInfo {
   authors: string[]
   title: string
@@ -25,13 +23,20 @@ export class BookInfo implements IBookInfo {
 }
 
 export class BookDataTransformer {
+  static DEFAULT_THUMBNAIL_PATH = "src/public/images/defaultThumbnail.png"
+
   static parse(rawData: any) {
     return rawData.items.map( (bookData: any) => {
+      const bookHasImageLinks =  !!bookData.volumeInfo.imageLinks
+      const image =  bookHasImageLinks ? 
+        bookData.volumeInfo.imageLinks.thumbnail : 
+        BookDataTransformer.DEFAULT_THUMBNAIL_PATH
+
       return new BookInfo({
         authors: bookData.volumeInfo.authors,
         title: bookData.volumeInfo.title,
         publisher: bookData.volumeInfo.publisher,
-        image: bookData.volumeInfo.imageLinks.thumbnail,
+        image,
         url: bookData.volumeInfo.infoLink
       })
     })
