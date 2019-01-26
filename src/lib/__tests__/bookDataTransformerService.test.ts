@@ -33,7 +33,7 @@ describe('BookInfo class structure', () => {
 })
 
 describe('BookTransformer with successful search', () => {
-  test('returns a BookInfo object of the correct shape', () => {
+  test('returns an array of BookInfo objects of the correct shape', () => {
     const rawData = sampleBookData
     const bookData = BookDataTransformer.parse(rawData)
     const testData = [
@@ -54,19 +54,20 @@ describe('BookTransformer with successful search', () => {
     ]
     expect(bookData).toEqual(testData)
   })
-})
 
-describe('BookTransformer with unsuccessful search', () => {
-  test('returns a BookInfo object of the correct shape', () => {
-    const rawData = sampleBookData
+  test('returns BookInfo objects with default image if no image links', () => {
+    const rawData = Object.assign({}, sampleBookData)
+    delete rawData.items[0].volumeInfo.imageLinks
+
     const bookData = BookDataTransformer.parse(rawData)
-    missingImageUrl = "public/images/defaultThumbnail."
+
+    const missingImageUrl = "src/public/images/defaultThumbnail.png"
     const testData = [
       new BookInfo({
         title: 'Dracula',
         authors: [ 'Stephanie Spinner'],
         publisher: 'Turtleback',
-        image: 'http://books.google.com/books/content?id=T1VDAQAAMAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+        image: missingImageUrl,
         url: 'http://books.google.com/books?id=ZYBTswEACAAJ&dq=Dracula&hl=&source=gbs_api'
       }),
       new BookInfo({
@@ -78,5 +79,31 @@ describe('BookTransformer with unsuccessful search', () => {
       })
     ]
     expect(bookData).toEqual(testData)
+  })
+})
+
+describe('BookTransformer with unsuccessful search', () => {
+  test('returns a BookInfo object of the correct shape', () => {
+    // const rawData = Object.assign({}, sampleBookData)
+    // delete rawData.items[0].volumeInfo.imageLinks
+    // const bookData = BookDataTransformer.parse(rawData)
+    // const missingImageUrl = "src/public/images/defaultThumbnail."
+    // const testData = [
+    //   new BookInfo({
+    //     title: 'Dracula',
+    //     authors: [ 'Stephanie Spinner'],
+    //     publisher: 'Turtleback',
+    //     image: missingImageUrl,
+    //     url: 'http://books.google.com/books?id=ZYBTswEACAAJ&dq=Dracula&hl=&source=gbs_api'
+    //   }),
+    //   new BookInfo({
+    //     title: 'Dracula',
+    //     authors: [ 'Stephanie Spinner' ],
+    //     publisher: 'Random House Books for Young Readers',
+    //     image: 'http://books.google.com/books/content?id=T1VDAQAAMAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+    //     url: 'http://books.google.com/books?id=8xliPgAACAAJ&dq=Dracula&hl=&source=gbs_api'
+    //   })
+    // ]
+    // expect(bookData).toEqual(testData)
   })
 })
