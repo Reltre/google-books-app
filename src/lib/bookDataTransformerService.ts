@@ -25,4 +25,15 @@ export class BookInfo implements IBookInfo {
 }
 
 export class BookDataTransformer {
+  static parse(rawData: any) {
+    return rawData.items.map( (bookData: any) => {
+      return new BookInfo({
+        authors: bookData.volumeInfo.authors,
+        title: bookData.volumeInfo.title,
+        publisher: bookData.volumeInfo.publisher,
+        image: bookData.volumeInfo.imageLinks.thumbnail,
+        url: bookData.volumeInfo.infoLink
+      })
+    })
+  }
 }
