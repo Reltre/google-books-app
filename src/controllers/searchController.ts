@@ -1,5 +1,9 @@
+import { BookRetrieval } from '../lib/bookRetrievalService'
+import { BookDataTransformer } from '../lib/bookDataTransformerService';
 export class SearchController {
-  search(req: any, res: any) { 
-    res.send('Google Books API App!');
+  async search(req: any, res: any) {
+    const rawData = await BookRetrieval.search(req.query.search_term)
+    const bookData = await BookDataTransformer.parse(rawData)
+    res.status(200).send(JSON.stringify(bookData));
   }
 }
