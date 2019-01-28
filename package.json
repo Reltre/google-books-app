@@ -9,7 +9,7 @@
     "copy-assets": "cp -r src/public dist/src",
     "start-dev": "ts-node index.ts",
     "start": "node dist/index.js",
-    "postintall": "yarn build-ts && yarn copy-assets"
+    "postinstall": "yarn build-ts && yarn copy-assets"
   },
   "author": "Tyler Lippert",
   "license": "ISC",
