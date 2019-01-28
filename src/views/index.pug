@@ -17,17 +17,23 @@ body
             button.ui.icon.basic.circular.button(type="submit")
               i.search.icon
 
-  .ui.stackable.four.column.centered.grid
-    each book in books
-      .column
-        .ui.card
-          .image
-            .a(href=book.url)
-              img(src=book.image)
-          .content
-            a.header #{book.title}
-          .meta
-            Published by #{book.publisher}
-  
+  if books.length > 0
+    .ui.stackable.four.column.centered.grids.cards
+      each book in books
+          .ui.card
+            a(href=book.url target="_blank")
+              img.ui.centered.image.small(src=book.image)
+            .content
+              a.header #{book.title}
+              if book.authors
+                p Written By #{listFormat(book.authors)}
+              else
+                p Authors unknown
+            .meta
+              if book.publisher
+                p Published by #{book.publisher}
+              else
+                p Publisher unknown
+
 
  
