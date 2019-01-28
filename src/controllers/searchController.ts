@@ -16,8 +16,8 @@ export class SearchController {
   }
 
   async search(req: any, res: any) {
-    if(req.query.search_term) {
-      const rawData = await BookRetrieval.search(req.query.search_term)
+    if(req.query.search) {
+      const rawData = await BookRetrieval.search(req.query.search)
       const bookData = await BookDataTransformer.parse(rawData)
       res.status(200).render(
         'index', 
