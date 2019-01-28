@@ -1,0 +1,8 @@
+.ui.card > .image a img {
+  width: 128px;
+  height: 193px;
+}
+
+button.ui.icon.basic.circular {
+  margin-left: 1rem;
+}
