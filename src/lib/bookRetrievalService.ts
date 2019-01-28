@@ -1,6 +1,4 @@
-import * as dotenv from "dotenv" 
 import axios from "axios"
-dotenv.config()
 
 export class BookRetrieval {
   static async search(title: string) {
