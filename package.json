@@ -1,5 +1,5 @@
 {
-  "name": "google-books-app",
+  "name": "look-books",
   "version": "1.0.0",
   "description": "A Book Search App that makes uses of the Google Books API",
   "main": "dist/index.js",

@@ -1,16 +1,16 @@
-### Google Books Viewer App
+## Look Books
 
-This is an application that lets you look up books through the Google Books API. 
+A book viewer app that lets you look up books through the Google Books API.
 
 ### Initial Setup
 
 Make sure to install the necessary dependencies if you're going to run this locally on your machine: `yarn install`.
 
-If you don't have `yarn` installed, you can add it to your machine with `npm install -g yarn`
+If you don't have `yarn` installed, you can add it to your machine with `npm install -g yarn`.
 
 ### Starting the app locally
 
-If running locally, use `yarn start-dev` to start the server for this application. This will run the TypeScript index file using `ts-node`. Then in your browser, navigate to `https://localhost:8080`
+If running locally, use `yarn start-dev` to start the server for this application. This will run the TypeScript index file using `ts-node`. Then in your browser, navigate to `https://localhost:8080`.
 
 ### Testing
 

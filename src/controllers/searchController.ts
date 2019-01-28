@@ -1,5 +1,6 @@
 import { BookRetrieval } from '../lib/bookRetrievalService'
 import { BookDataTransformer } from '../lib/bookDataTransformerService';
+
 export class SearchController {
   static helpers = {
     listFormat: (authors: Array<string>) => {
