@@ -14,6 +14,6 @@ describe('GET /', () => {
 
   test('on unsuccessful search, no results are within response', async () => {
     const response = await request(app).get("/?search=ZZXGHJK54345")
-    expect(response.text).toMatch("[]")
+    expect(response.text).not.toMatch(/.*Dracula.*/)
   })
 })
