@@ -23,7 +23,7 @@ export class BookInfo implements IBookInfo {
 }
 
 export class BookDataTransformer {
-  static DEFAULT_THUMBNAIL_PATH = "src/public/images/defaultThumbnail.png"
+  static DEFAULT_THUMBNAIL_PATH = "images/defaultThumbnail.png"
 
   static parse(rawData: any) {
     if (rawData.totalItems === 0) return new Array<string>()
