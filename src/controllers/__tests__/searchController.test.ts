@@ -8,12 +8,12 @@ describe('GET /', () => {
   })
 
   test('on successful search response includes correct title', async () => {
-    const response = await request(app).get("/?search_term=Dracula")
+    const response = await request(app).get("/?search=Dracula")
     expect(response.text).toMatch(/.*Dracula.*/)
   })
 
   test('on unsuccessful search, no results are within response', async () => {
-    const response = await request(app).get("/?search_term=ZZXGHJK54345")
+    const response = await request(app).get("/?search=ZZXGHJK54345")
     expect(response.text).toMatch("[]")
   })
 })
