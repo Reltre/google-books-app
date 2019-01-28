@@ -1,4 +1,5 @@
-import { BookDataTransformer, BookInfo, IBookInfo }from '../bookDataTransformerService'
+import { BookInfo, IBookInfo } from '../../models/bookInfo'
+import { BookDataTransformer,  }from '../bookDataTransformerService'
 import { sampleBookData } from '../fixtures/sampleBookData'
 
 const details: IBookInfo = {
