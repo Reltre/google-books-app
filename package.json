@@ -6,9 +6,10 @@
   "scripts": {
     "test": "jest",
     "build-ts": "tsc",
+    "copy-assets": "cp -r src/public dist/src",
     "start-dev": "ts-node index.ts",
     "start": "node dist/index.js",
-    "postintall": "yarn build-ts"
+    "postintall": "yarn build-ts && yarn copy-assets"
   },
   "author": "Tyler Lippert",
   "license": "ISC",
