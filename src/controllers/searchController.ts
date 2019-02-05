@@ -18,14 +18,24 @@ export class SearchController {
 
   async search(req: any, res: any) {
     if(req.query.search) {
-      const rawData = await BookRetrieval.search(req.query.search)
-      const bookData = await BookDataTransformer.parse(rawData)
-      res.status(200).render(
-        'index', 
-        {books: bookData, listFormat: SearchController.helpers.listFormat}
-      );
+      try {
+        const rawData = await BookRetrieval.search(req.query.search)
+        await this.validateThatBookDataIsPresent(rawData)
+        const bookData = await BookDataTransformer.parseBookInfoList(rawData.items)
+        res.status(200).render(
+          'index', 
+          {books: bookData, listFormat: SearchController.helpers.listFormat}
+        );
+      } catch(err) {
+        console.log(err)
+        res.status(200).render('index', {books: []});
+      }
     } else {
       res.status(200).render('index', {books: []});
     }
+  }
+
+  private async validateThatBookDataIsPresent(rawData: any) {
+    if (rawData.itemCount == 0) throw new Error('No items for display')
   }
 }

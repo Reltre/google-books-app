@@ -3,18 +3,21 @@ import { BookInfo } from '../models/bookInfo'
 export class BookDataTransformer {
   static DEFAULT_THUMBNAIL_PATH = "images/defaultThumbnail.png"
 
-  static parse(rawData: any) {
-    if (rawData.totalItems === 0) return new Array<string>()
-    return rawData.items.map( (bookData: any) => {
-      const image = BookDataTransformer.setImagePathFrom(bookData)
-      return new BookInfo({
-        title: bookData.volumeInfo.title,
-        authors: bookData.volumeInfo.authors,
-        publisher: bookData.volumeInfo.publisher,
-        image,
-        url: bookData.volumeInfo.infoLink
-      })
+  static parseBookInfoList(items: any) {
+    return items.map((bookData: any) => {
+      bookData = BookDataTransformer.gatherBookInfoFrom(bookData)
+      return new BookInfo(bookData)
     })
+  }
+
+  private static gatherBookInfoFrom(bookData: any) {
+    return  { 
+      title: bookData.volumeInfo.title,
+      authors: bookData.volumeInfo.authors,
+      publisher: bookData.volumeInfo.publisher,
+      image: BookDataTransformer.setImagePathFrom(bookData),
+      url: bookData.volumeInfo.infoLink
+    } 
   }
 
   private static setImagePathFrom(data: any) {
