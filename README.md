@@ -10,7 +10,7 @@ If you don't have `yarn` installed, you can add it to your machine with `npm ins
 
 ### Starting the app locally
 
-If running locally, use `yarn start-dev` to start the server for this application. This will run the TypeScript index file using `ts-node`. Then in your browser, navigate to `https://localhost:8080`.
+If running locally, use `yarn start-dev` to start the server for this application. This will run the TypeScript index file using `ts-node`. Then in your browser, navigate to `http://localhost:8080`.
 
 ### Testing
 
@@ -18,5 +18,5 @@ Some tests have been added both locally and in the cloud. If you wish to run the
 
 ### Try it Out
 
-You're welcome to try this application out as well. It can be access at this address: https://look-books.herokuapp.com/.
+You're welcome to try this application out as well. It can be accessed at this address: https://look-books.herokuapp.com/.
 It should work both on mobile and on a normal computer.
