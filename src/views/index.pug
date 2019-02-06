@@ -11,9 +11,9 @@ body
         h1.ui.header Look Books
     .three.column.centered.row
       .ui.search
-        form.ui.form
+        form.ui.form(method="get" action="/search")
           .ui.icon.input
-            input.prompt(type="text" name="search" placeholder="Search books")
+            input.prompt(type="text" name="q" placeholder="Search books")
             button.ui.icon.basic.circular.button(type="submit")
               i.search.icon
 
