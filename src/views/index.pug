@@ -26,7 +26,7 @@ body
             .content
               a.header #{book.title}
               if book.authors
-                p Written By #{listFormat(book.authors)}
+                p Written By #{formatForDisplay(book.authors)}
             .meta
               if book.publisher
                 p Published by #{book.publisher}
