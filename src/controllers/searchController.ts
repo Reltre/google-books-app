@@ -8,8 +8,10 @@ export class SearchController {
         return authors.join(" and ")
       } else if (authors.length > 2) {
         const allButLastAuthor = authors.slice(0, -1).join(", ")
-        const conjunction = "and "
-        return allButLastAuthor.concat(conjunction).concat(authors[-1])
+        const conjunction = ", and "
+        return allButLastAuthor
+          .concat(conjunction)
+          .concat(authors.slice(-1)[0])
       } else {
         return authors[0]
       }
