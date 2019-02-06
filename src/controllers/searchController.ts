@@ -3,19 +3,6 @@ import { BookDataTransformer } from '../lib/bookDataTransformerService';
 
 export class SearchController {
   static helpers = {
-    joinAnd: (authors: Array<string>) => {
-      return authors.join(" and ")
-    },
-    joinIntoListWithAnd: (authors: Array<string>) => {
-      const allButLastAuthor = authors.slice(0, -1).join(", ")
-      const conjunction = ", and "
-      return allButLastAuthor
-        .concat(conjunction)
-        .concat(authors.slice(-1)[0])
-    },
-    singleAuthor: (authors: Array<string>) => {
-      return authors.slice(0)
-    },
     formatForDisplay: (authors: Array<string>) => {
       if (authors.length === 2) {
         return SearchController.helpers.joinAnd(authors)
@@ -24,6 +11,16 @@ export class SearchController {
       } else {
         return SearchController.helpers.singleAuthor(authors)
       }
+    }, joinAnd: (authors: Array<string>) => {
+      return authors.join(" and ")
+    }, joinIntoListWithAnd: (authors: Array<string>) => {
+      const allButLastAuthor = authors.slice(0, -1).join(", ")
+      const conjunction = ", and "
+      return allButLastAuthor
+        .concat(conjunction)
+        .concat(authors.slice(-1)[0])
+    }, singleAuthor: (authors: Array<string>) => {
+      return authors.slice(0)
     }
   }
 
