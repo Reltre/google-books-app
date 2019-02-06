@@ -20,14 +20,14 @@ export class SearchController {
     if(req.query.search) {
       try {
         const rawData = await BookRetrieval.search(req.query.search)
-        await this.validateThatBookDataIsPresent(rawData)
+        await SearchController.validateThatBookDataIsPresent(rawData)
         const bookData = await BookDataTransformer.parseBookInfoList(rawData.items)
         res.status(200).render(
           'index', 
           {books: bookData, listFormat: SearchController.helpers.listFormat}
         );
       } catch(err) {
-        console.log(err)
+        console.log(err.message)
         res.status(200).render('index', {books: []});
       }
     } else {
@@ -35,7 +35,10 @@ export class SearchController {
     }
   }
 
-  private async validateThatBookDataIsPresent(rawData: any) {
-    if (rawData.itemCount == 0) throw new Error('No items for display')
+  private static async validateThatBookDataIsPresent(rawData: any) {
+    return new Promise((resolve, reject) => { 
+      if (rawData.totalItems === 0) throw new Error('No items for display')
+      resolve(true)
+    })
   }
 }

@@ -36,7 +36,7 @@ describe('BookInfo class structure', () => {
 describe('BookTransformer with successful search', () => {
   test('returns an array of BookInfo objects of the correct shape', () => {
     const rawData = sampleBookData
-    const bookData = BookDataTransformer.parseBookInfoList(rawData)
+    const bookData = BookDataTransformer.parseBookInfoList(rawData.items)
     const testData = [
       new BookInfo({
         title: 'Dracula',
