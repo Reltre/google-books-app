@@ -24,24 +24,24 @@ export class SearchController {
     }
   }
 
+  async index(req: any, res: any) {
+    res.status(200).render('index', {books: []});
+  }
+
   async search(req: any, res: any) {
-    if(req.query.search) {
-      try {
-        const rawData = await BookRetrieval.search(req.query.search)
-        await SearchController.validateThatBookDataIsPresent(rawData)
-        const bookData = await BookDataTransformer.parseBookInfoList(rawData.items)
-        res.status(200).render(
-          'index', 
-          { 
-            books: bookData,
-            formatForDisplay: SearchController.helpers.formatForDisplay
-          }
-        );
-      } catch(err) {
-        console.log(err.message)
-        res.status(200).render('index', {books: []});
-      }
-    } else {
+    try {
+      const rawData = await BookRetrieval.search(req.query.q)
+      await SearchController.validateThatBookDataIsPresent(rawData)
+      const bookData = await BookDataTransformer.parseBookInfoList(rawData.items)
+      res.status(200).render(
+        'index', 
+        { 
+          books: bookData,
+          formatForDisplay: SearchController.helpers.formatForDisplay
+        }
+      );
+    } catch(err) {
+      console.log(err.message)
       res.status(200).render('index', {books: []});
     }
   }
