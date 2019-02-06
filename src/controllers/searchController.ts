@@ -3,17 +3,26 @@ import { BookDataTransformer } from '../lib/bookDataTransformerService';
 
 export class SearchController {
   static helpers = {
-    listFormat: (authors: Array<string>) => {
+    joinAnd: (authors: Array<string>) => {
+      return authors.join(" and ")
+    },
+    joinIntoListWithAnd: (authors: Array<string>) => {
+      const allButLastAuthor = authors.slice(0, -1).join(", ")
+      const conjunction = ", and "
+      return allButLastAuthor
+        .concat(conjunction)
+        .concat(authors.slice(-1)[0])
+    },
+    singleAuthor: (authors: Array<string>) => {
+      return authors.slice(0)
+    },
+    formatForDisplay: (authors: Array<string>) => {
       if (authors.length === 2) {
-        return authors.join(" and ")
+        return SearchController.helpers.joinAnd(authors)
       } else if (authors.length > 2) {
-        const allButLastAuthor = authors.slice(0, -1).join(", ")
-        const conjunction = ", and "
-        return allButLastAuthor
-          .concat(conjunction)
-          .concat(authors.slice(-1)[0])
+        return SearchController.helpers.joinIntoListWithAnd(authors)
       } else {
-        return authors[0]
+        return SearchController.helpers.singleAuthor(authors)
       }
     }
   }
@@ -26,7 +35,10 @@ export class SearchController {
         const bookData = await BookDataTransformer.parseBookInfoList(rawData.items)
         res.status(200).render(
           'index', 
-          {books: bookData, listFormat: SearchController.helpers.listFormat}
+          { 
+            books: bookData,
+            formatForDisplay: SearchController.helpers.formatForDisplay
+          }
         );
       } catch(err) {
         console.log(err.message)
