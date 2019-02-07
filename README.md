@@ -32,7 +32,9 @@ the "e2e" directory.
 
 Then, if you haven't done so already, install dependencies for e2e testing using `yarn install`
 
-Next use the command `yarn cypress:run` to run all integration tests in the terminal.
+Next start the application server with `yarn start`. This is necessary so that cypress has an application running to test against.
+
+After that, use the command `yarn cypress:run` to run all integration tests in the terminal.
 
 If you wish to run individual test files, then I recommend using `yarn cypress:open` instead.
 This command will launch a GUI that lets us run individual files and see those tests plays out in a simulated browser.
