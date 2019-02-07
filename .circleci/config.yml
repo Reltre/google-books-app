@@ -38,6 +38,7 @@ jobs:
 
   test:
     docker:
+      - image: circleci/node:11.0
       - image: cypress/base:8
 
     working_directory: ~/repo
@@ -52,7 +53,7 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: yarn install
+      - run: npm run install
 
       - save_cache:
           paths:
