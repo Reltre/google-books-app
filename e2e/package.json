@@ -1,0 +1,20 @@
+{
+  "name": "cypress",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "../node_modules/.bin/ts-node ../index.ts",
+    "cypress:run": "./node_modules/.bin/cypress run",
+    "cypress:open": "./node_modules/.bin/cypress open",
+    "build": "./node_modules/.bin/webpack --output-filename out.js --entry ./cypress/integration/*.ts",
+    "lint": "./node_modules/.bin/tslint --project ./tsconfig.json",
+    "postlint": "tsc",
+    "tsc": "../node_modules/.bin/tsc --pretty --noEmit"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^3.1.5"
+  }
+}
