@@ -43,6 +43,8 @@ jobs:
     working_directory: ~/repo/e2e
 
     steps:
+      - checkout
+
       # install cypress dependencies
       - run: yarn install
       # run e2e tests
