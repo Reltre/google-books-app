@@ -11,21 +11,24 @@ export class SearchController {
       } else {
         return SearchController.helpers.singleAuthor(authors)
       }
-    }, joinAnd: (authors: Array<string>) => {
+    }, 
+    joinAnd: (authors: Array<string>) => {
       return authors.join(" and ")
-    }, joinIntoListWithAnd: (authors: Array<string>) => {
+    }, 
+    joinIntoListWithAnd: (authors: Array<string>) => {
       const allButLastAuthor = authors.slice(0, -1).join(", ")
       const conjunction = ", and "
       return allButLastAuthor
         .concat(conjunction)
         .concat(authors.slice(-1)[0])
-    }, singleAuthor: (authors: Array<string>) => {
+    }, 
+    singleAuthor: (authors: Array<string>) => {
       return authors.slice(0)
     }
   }
 
   async index(req: any, res: any) {
-    res.status(200).render('index', {books: []});
+    res.status(200).render('index');
   }
 
   async search(req: any, res: any) {
@@ -42,7 +45,7 @@ export class SearchController {
       );
     } catch(err) {
       console.log(err.message)
-      res.status(200).render('index', {books: []});
+      res.status(200).render('index');
     }
   }
 
