@@ -9,7 +9,8 @@
     "copy-assets": "cp -r src/public dist/src",
     "start-dev": "ts-node index.ts",
     "start": "node ./dist/index.js",
-    "postinstall": "yarn build-ts && yarn copy-assets"
+    "postinstall": "yarn build-ts && yarn copy-assets",
+    "cypress:open": "cypress open -r ts-node/register"
   },
   "author": "Tyler Lippert",
   "license": "ISC",
@@ -29,7 +30,6 @@
   "devDependencies": {
     "@types/jest": "^23.3.13",
     "@types/supertest": "^2.0.7",
-    "cypress": "^3.1.4",
     "jest": "^23.6.0",
     "supertest": "^3.4.2",
     "ts-jest": "^23.10.5",
