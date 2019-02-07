@@ -17,7 +17,9 @@ body
             button.ui.icon.basic.circular.button(type="submit")
               i.search.icon
 
-  if books.length > 0
+  if notfound
+    include includes/notFound.pug
+  else if books.length > 0
     .ui.stackable.three.column.centered.grids.cards
       each book in books
           .ui.card
@@ -30,6 +32,4 @@ body
             .meta
               if book.publisher
                 p Published by #{book.publisher}
-
-
- 
+    
