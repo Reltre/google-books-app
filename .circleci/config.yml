@@ -40,15 +40,15 @@ jobs:
     docker:
       - image: cypress/base:8
 
-    working_directory: ~/repo/e2e
+    working_directory: ~/repo
 
     steps:
       - checkout
 
       # install cypress dependencies
-      - run: yarn install
+      - run: cd e2e && yarn install
       # run e2e tests
-      - run: yarn cypress:run
+      - run: cd e2e && yarn cypress:run
 
 workflows:
   version: 2
