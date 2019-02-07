@@ -48,6 +48,7 @@ jobs:
       # install cypress dependencies
       - run: cd e2e && yarn install
       # run e2e tests
+      - run: cd e2e && yarn start
       - run: cd e2e && yarn cypress:run
 
 workflows:
