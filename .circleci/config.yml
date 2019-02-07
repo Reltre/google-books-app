@@ -4,7 +4,7 @@
 #
 version: 2
 jobs:
-  test:
+  build:
     docker:
       # specify the version you desire here
       - image: circleci/node:11.0
@@ -36,7 +36,7 @@ jobs:
       # run tests!
       - run: yarn test
 
-  test-e2e:
+  test:
     docker:
       - image: cypress/base:8
 
