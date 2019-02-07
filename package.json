@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "build-ts": "tsc",
-    "copy-assets": "cp -r src/public dist/src",
+    "copy-assets": "cp -r src/public src/views dist/src",
     "start-dev": "ts-node index.ts",
     "start": "node ./dist/index.js",
     "postinstall": "yarn build-ts && yarn copy-assets"
